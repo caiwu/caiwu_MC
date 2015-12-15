@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="renderer" content="webkit" />
+<title>考勤系统-工资统计</title>
+<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="css/css.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.infieldlabel.min.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>  
+<script type="text/javascript" src="js/html5.js"></script>
+<script type="text/javascript" src="js/excanvas.js"></script>
+<![endif]-->
+</head>
+<body>
+<div class="page-header f-cf">
+    <div class="date">2015年 03月 20日 16:20</div>
+    <div class="logo"><a href="#"><img src="img/logo.png" alt="" /></a></div>
+</div>
+<div class="page-content f-cf">
+    <div class="page-side f-cf">
+        <ul class="side-menu">
+            <li> <a href="javascript:void(0);"><i class="icon icon-user"></i>人力资源<i class="arrow"></i></a>
+                <ul class="side-menu-sub">
+                    <li><a href="#">职工台账</a></li>
+                    <li><a href="#">证件管理</a></li>
+                </ul>
+            </li>
+            <li> <a href="javascript:void(0);"><i class="icon icon-list"></i>工资管理<i class="arrow"></i></a>
+                <ul class="side-menu-sub">
+                    <li><a href="#">工资录入</a></li>
+                    <li><a href="#">工资统计</a></li>
+                    <li><a href="#">工资发放</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="page-main f-cf">
+        <div class="form-manage f-cf">
+            <div class="tab-nav f-cf">
+                <ul class="nav">
+                    <li><a href="#" class="z-active">日工明细表</a></li>
+                    <li><a href="#">包工明细表</a></li>
+                    <li><a href="#">借支明细表</a></li>
+                    <li><a href="#">工资汇总表（单月）</a></li>
+                    <li><a href="#">工资汇总表（多月）</a></li>
+                    <li><a href="#">工资统计表</a></li>
+                </ul>
+            </div>
+            <div class="group f-cf">
+                <div class="item">
+                    <div class="u-select" style="width:140px; z-index:9;">
+                        <h3 class="value"><span class="val">木工</span><i class="arrow"></i></h3>
+                        <ul class="list">
+                            <li>木工1</li>
+                            <li>木工2</li>
+                        </ul>
+                    </div>
+                    <div class="u-select" style="width:140px; z-index:9;">
+                        <h3 class="value"><span class="val">项目</span><i class="arrow"></i></h3>
+                        <ul class="list">
+                            <li>项目1</li>
+                            <li>项目2</li>
+                        </ul>
+                    </div>
+                    <div class="u-search">
+                        <input type="button" class="btn" value="" />
+                        <input type="text" class="txt" value="" id="txt-search" />
+                        <label for="txt-search" class="lab">姓名检索</label>
+                    </div>
+                    <a href="javascript:void(0);" class="u-button">打 印</a> </div>
+            </div>
+        </div>
+        <div class="f-cf">
+            <div class="m-table-w">
+                <table class="m-table" width="100%" cellpadding="0" cellspacing="0" border="1" bordercolor="#b4b4b4">
+                    <tr class="tr-caption">
+                        <td colspan="13" class="caption">A项目 工程作业人员工资表</td>
+                        <td rowspan="0" width="100"></td>
+                    </tr>
+                    <tr>
+                        <th class="f-bc1">序号</th>
+                        <th>姓名</th>
+                        <th>月份</th>
+                        <th colspan="2">日工</th>
+                        <th>包工</th>
+                        <th>奖金</th>
+                        <th>补贴</th>
+                        <th class="f-bc2">应发合计</th>
+                        <th>借支</th>
+                        <th>罚款</th>
+                        <th class="f-bc3">扣款合计</th>
+                        <th class="f-bc4">余额</th>
+                    </tr>
+                    <tr>
+                        <td class="f-tc">1</td>
+                        <td class="f-tc">周乐享</td>
+                        <td class="f-tc">04</td>
+                        <td class="f-tc">30</td>
+                        <td class="f-tc">5000</td>
+                        <td class="f-tc">5000</td>
+                        <td class="f-tc"></td>
+                        <td class="f-tc"></td>
+                        <td class="f-tc f-bc2"></td>
+                        <td class="f-tc"></td>
+                        <td class="f-tc"></td>
+                        <td class="f-tc f-bc3"></td>
+                        <td class="f-tc f-bc4"></td>
+                    </tr>
+                    <tr>
+                        <td class="f-tc">1</td>
+                        <td class="f-tc">周乐享</td>
+                        <td class="f-tc">04</td>
+                        <td class="f-tc">30</td>
+                        <td class="f-tc">5000</td>
+                        <td class="f-tc">5000</td>
+                        <td class="f-tc"></td>
+                        <td class="f-tc"></td>
+                        <td class="f-tc f-bc2"></td>
+                        <td class="f-tc"></td>
+                        <td class="f-tc"></td>
+                        <td class="f-tc f-bc3"></td>
+                        <td class="f-tc f-bc4"></td>
+                    </tr>
+                    <tr>
+                        <td class="f-tc">1</td>
+                        <td class="f-tc">周乐享</td>
+                        <td class="f-tc">04</td>
+                        <td class="f-tc">30</td>
+                        <td class="f-tc">5000</td>
+                        <td class="f-tc">5000</td>
+                        <td class="f-tc"></td>
+                        <td class="f-tc"></td>
+                        <td class="f-tc f-bc2"></td>
+                        <td class="f-tc"></td>
+                        <td class="f-tc"></td>
+                        <td class="f-tc f-bc3"></td>
+                        <td class="f-tc f-bc4"></td>
+                    </tr>
+                </table>
+                <ul class="table-info f-cf">
+                    <li class="item-1">单位：</li>
+                    <li class="item-2">审核人：</li>
+                    <li class="item-3">负责任：</li>
+                    <li class="item-4">日期：</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

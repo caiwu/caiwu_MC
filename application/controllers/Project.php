@@ -38,7 +38,7 @@ class Project extends MY_Controller {
 				$_POST['create_time'] = time();
 				$bool = $this->Projectmodel->insert_info($_POST);
 				if($bool){
-					echo "<script>window.location.href='".site_url('Project/projectList')."'</script>";
+					$this->skip('/Project/projectList');
 				}else{
 					$this->error['code'] = 2;
 					$this->error['massage'] = '注册失败';
@@ -82,9 +82,9 @@ class Project extends MY_Controller {
 				$user_str = implode(",", $_POST);
 				$bool = $this->Projectmodel->update_user_project_info($user_str,$idd);
 				if($bool){
-					echo "<script>alert('分配成功');window.location.href='".site_url('project/projectList')."'</script>";
+					$this->skip('/Project/projectList','分配成功');
 				}else{
-					echo "<script>alert('分配失败');window.location.href='".site_url('project/projectList')."'</script>";
+					$this->skip('/Project/projectList','分配失败');
 				}
 			}
 		}
@@ -144,7 +144,7 @@ class Project extends MY_Controller {
 			$this->assign('menu','project/projectList');
 			$this->display('projectWork.php');
 		}else{
-			echo "<script>window.location.href='".site_url('Project/projectList')."'</script>";
+			$this->skip('/Project/projectList');
 		}
 	}
 	
@@ -153,9 +153,22 @@ class Project extends MY_Controller {
 			$this->form_validation->set_rules('pro_name','pro_name','required');
 			if($this->form_validation->run() != FALSE){
 				unset($_POST['submit']);
-				$bool = $this->Projectmodel->update_info($_POST);
+				if(empty($_POST['pro_password']) && empty($_POST['password_sure'])){
+					unset($_POST['pro_password']);
+					unset($_POST['password_sure']);
+					$bool = $this->Projectmodel->update_info($_POST);
+				}else{
+					if($_POST['pro_password'] === $_POST['password_sure']){
+						unset($_POST['submit']);
+						unset($_POST['password_sure']);
+						$password = $this->encrypt_password($_POST['pro_password']);
+						$_POST['pro_salt'] = $password['salt'];
+						$_POST['pro_password'] = $password['password'];
+						$bool = $this->Projectmodel->update_info($_POST);
+					}
+				}
 				if($bool){
-					echo "<script>window.location.href='".site_url('Project/projectList')."'</script>";
+						$this->skip('/Project/projectList');
 				}
 			
 			}
